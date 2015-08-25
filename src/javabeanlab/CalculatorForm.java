@@ -315,6 +315,22 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         resetOperation();
     }//GEN-LAST:event_btnClearActionPerformed
 
+    public void insertTextField(String s){
+        jTextField1.setText(s);
+    }
+    
+    public void insertIntegerField(String s){
+        jIntegerField1.setText(s);
+    }
+     
+    public String getTextFieldText(){
+        return jTextField1.getText();
+    }
+    
+     public String getIntegerFieldText(){
+        return jIntegerField1.getText();
+    }
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         add = true;
   
