@@ -91,7 +91,11 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         jPanel1.add(jTextField1);
 
         jIntegerField1.setBackground(new java.awt.Color(51, 51, 51));
+        jIntegerField1.setBorder(null);
         jIntegerField1.setForeground(new java.awt.Color(255, 255, 255));
+        jIntegerField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jIntegerField1.setAlignmentX(2.5F);
+        jIntegerField1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jPanel1.add(jIntegerField1);
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -358,6 +362,10 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         functionCounter++;
     }
     
+    public String db2S(double d){
+        return Double.toString(d);
+    }
+    
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         resetTextFields();
         resetAnswerCounter();
@@ -371,7 +379,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         if(subtract){
             subtract();
             insertTextField(getTextFieldText()+getIntegerFieldText()+btnAdd.getActionCommand());
-            insertIntegerField(Double.toString(answer));    
+            insertIntegerField(db2S(answer));    
         }
   
         else if(multiply){
@@ -388,17 +396,13 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         
         else if(equals){
             jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnAdd.getActionCommand());
-        }
-        
-        else{
+        }else{
             jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnAdd.getActionCommand());
         }
         
         if(functionCounter < 1){
-            answer = Double.parseDouble(jIntegerField1.getText());  // test if this is first value entered
-        }
-        
-        else if(functionCounter>0 && multiply == false && divide == false && subtract == false){
+            answer = Double.parseDouble(jIntegerField1.getText());
+        }else if(functionCounter>0 && multiply == false && divide == false && subtract == false){
             add();
             jIntegerField1.setText(Double.toString(answer));
         }
@@ -410,7 +414,6 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         
         setOperation("+");
         functionCounterIncrement();
-        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
@@ -442,29 +445,24 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         // add operation to top right of jtextfield 1
         else if(jIntegerField1.getText().length() == 0){
             jTextField1.setText(jTextField1.getText() + btnMinus.getActionCommand()+jIntegerField1.getText());
-        }
-        
-        else{
+        }else{
             jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnMinus.getActionCommand());
         }
         
         if(functionCounter < 1){
-            answer = Double.parseDouble(jIntegerField1.getText());  // test if this is first value entered
-        }
-
-        // if all booleans are false subtract freely!
-        else if(functionCounter>1 && add == false && multiply == false && divide ==false){
+            answer = Double.parseDouble(jIntegerField1.getText()); 
+        }else if(functionCounter>1 && add == false && multiply == false && divide ==false){
             subtract();
             jIntegerField1.setText(Double.toString(answer));
         }
         
-        
-        setToFalse(add,multiply,divide);
-        
-        operation = "-";
-        
-        functionCounter++;
+        add = false;
+        multiply = false;
+        divide = false;
         buttonToggle = true;
+        
+        setOperation("-");
+        functionCounterIncrement();
     }//GEN-LAST:event_btnMinusActionPerformed
 
     private void btnMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultActionPerformed
