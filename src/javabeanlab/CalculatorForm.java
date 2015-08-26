@@ -35,7 +35,6 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         btn8.addActionListener(this);
         btn9.addActionListener(this);
         btnDecimalPoint.addActionListener(this);
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -90,6 +89,9 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         jTextField1.setBorder(null);
         jTextField1.setPreferredSize(new java.awt.Dimension(10, 25));
         jPanel1.add(jTextField1);
+
+        jIntegerField1.setBackground(new java.awt.Color(51, 51, 51));
+        jIntegerField1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jIntegerField1);
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -308,13 +310,10 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         operation = "";
     }
     
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        resetTextFields();
-        resetAnswerCounter();
-        setAllToFalse();
-        resetOperation();
-    }//GEN-LAST:event_btnClearActionPerformed
-
+    public void setOperation(String s){
+        operation = s;
+    }
+    
     public void insertTextField(String s){
         jTextField1.setText(s);
     }
@@ -327,24 +326,58 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         return jTextField1.getText();
     }
     
-     public String getIntegerFieldText(){
+    public String getIntegerFieldText(){
         return jIntegerField1.getText();
     }
     
+    public void add(){
+        answer += Double.parseDouble(jIntegerField1.getText());
+    }
+    
+    public void subtract(){
+        answer -= Double.parseDouble(jIntegerField1.getText());                                               
+    }  
+    
+    public void divide(){                                           
+        answer /= Double.parseDouble(jIntegerField1.getText());
+    }
+    
+    public void multiply(){         
+        answer *= Double.parseDouble(jIntegerField1.getText());
+    }
+    
+    boolean setToFalse(boolean a, boolean b, boolean c){
+        return false;
+    }
+    
+    boolean setToTrue(boolean b){
+        return true;
+    }
+    
+    public void functionCounterIncrement(){
+        functionCounter++;
+    }
+    
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        resetTextFields();
+        resetAnswerCounter();
+        setAllToFalse();
+        resetOperation();
+    }//GEN-LAST:event_btnClearActionPerformed
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         add = true;
-  
+        
         if(subtract){
             subtract();
-            jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnAdd.getActionCommand());
-            jIntegerField1.setText(Double.toString(answer));
-            
+            insertTextField(getTextFieldText()+getIntegerFieldText()+btnAdd.getActionCommand());
+            insertIntegerField(Double.toString(answer));    
         }
   
         else if(multiply){
             multiply();
             jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnAdd.getActionCommand());
-            jIntegerField1.setText(Double.toString(answer));
+            insertIntegerField(Double.toString(answer));
         }
    
         else if(divide){
@@ -352,6 +385,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
             jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnAdd.getActionCommand());
             jIntegerField1.setText(Double.toString(answer));
         }
+        
         else if(equals){
             jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnAdd.getActionCommand());
         }
@@ -372,11 +406,11 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         multiply = false;
         divide = false;
         subtract = false;
-        
-        operation = "+";
-        
-        functionCounter++;
         buttonToggle = true;
+        
+        setOperation("+");
+        functionCounterIncrement();
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
@@ -424,9 +458,8 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
             jIntegerField1.setText(Double.toString(answer));
         }
         
-        add = false;
-        multiply = false;
-        divide = false;
+        
+        setToFalse(add,multiply,divide);
         
         operation = "-";
         
@@ -472,9 +505,8 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
             jIntegerField1.setText(Double.toString(answer));
         }
         
-        subtract = false;
-        add = false;
-        divide = false;
+        
+        setToFalse(subtract,add,divide);
         
         operation = "*";
         
@@ -518,7 +550,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
     private void btnDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivideActionPerformed
          divide = true;
         
-         if(subtract){
+        if(subtract){
             subtract();
             jTextField1.setText(jTextField1.getText() + jIntegerField1.getText()+btnDivide.getActionCommand());
             jIntegerField1.setText(Double.toString(answer));    
@@ -553,9 +585,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
             jIntegerField1.setText(Double.toString(answer));
         }
         
-        add = false;
-        multiply = false;
-        subtract = false;
+        setToFalse(add,multiply,subtract);
         
         operation = "/";
         
@@ -597,21 +627,6 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
 
     }
 
-    
-    public void add(){
-        answer += Double.parseDouble(jIntegerField1.getText());
-    }
-    public void subtract(){
-        answer -= Double.parseDouble(jIntegerField1.getText());     /*
-                                                                        FOUR METHODS PERFORM MATHEMATIC OPERATIONS
-                                                                    */
-    }                                                                  
-    public void divide(){                                           
-        answer /= Double.parseDouble(jIntegerField1.getText());
-    }
-    public void multiply(){         
-        answer *= Double.parseDouble(jIntegerField1.getText());
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn0;
     private javax.swing.JButton btn1;
