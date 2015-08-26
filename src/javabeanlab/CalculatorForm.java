@@ -362,6 +362,10 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         functionCounter++;
     }
     
+    public void functionCounterReset(){
+        functionCounter = 0;
+    }
+    
     public String db2S(double d){
         return Double.toString(d);
     }
@@ -537,11 +541,10 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         multiply = false;
         divide = false;
         
-        functionCounter = 0;
-        operation = "";
-        
-        jTextField1.setText("");
-        jIntegerField1.setText(Double.toString(answer));
+        functionCounterReset();
+        setOperation("");
+        insertTextField("");
+        insertIntegerField(db2S(answer));
         
     }//GEN-LAST:event_btnEqualActionPerformed
 
