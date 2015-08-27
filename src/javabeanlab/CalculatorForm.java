@@ -383,27 +383,27 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         
         if(subtract){
             subtract();
-            insText(getText()+getInteger()+btnAdd.getActCom());
+            insText(getText()+getInteger()+getActCom(btnAdd));
             insInteger(db2String(answer));    
         }
   
         else if(multiply){
             multiply();
-            insText(getText()+getInteger()+btnAdd.getActCom());
+            insText(getText()+getInteger()+getActCom(btnAdd));
             insInteger(db2String(answer));
         }
    
         else if(divide){
             divide();
-            insText(getText() + getInteger()+btnAdd.getActCom());
-            insText(getText()+getInteger()+btnAdd.getActCom());
+            insText(getText() + getInteger()+getActCom(btnAdd));
+            insText(getText()+getInteger()+getActCom(btnAdd));
             insInteger(db2String(answer));
         }
         
         else if(equals){
-            insText(getText()+getInteger()+btnAdd.getActCom());
+            insText(getText()+getInteger()+getActCom(btnAdd));
         }else{
-            insText(getText() + getInteger()+btnAdd.getActCom());
+            insText(getText() + getInteger()+getActCom(btnAdd));
         }
         
         if(functionCounter < 1){
@@ -653,7 +653,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn0.getActCom());
+            insInteger(getInteger()+getActCom(btn0));
         }
         
         else if(input == btn1){
@@ -662,7 +662,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn1.getActCom());        
+            insInteger(getInteger()+getActCom(btn1));        
         }
         
         else if(input == btn2){
@@ -670,7 +670,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn2.getActCom());
+            insInteger(getInteger()+getActCom(btn2));
         }
         
         else if(input == btn3){
@@ -678,7 +678,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn3.getActCom());
+            insInteger(getInteger()+getActCom(btn3));
         }
         
         else if(input == btn4){
@@ -686,7 +686,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn4.getActCom());  
+            insInteger(getInteger()+getActCom(btn4));  
         }
         
         else if(input == btn5){
@@ -694,7 +694,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn5.getActCom());
+            insInteger(getInteger()+getActCom(btn5));
         }
         
         else if(input == btn6){
@@ -702,7 +702,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn6.getActCom()); 
+            insInteger(getInteger()+getActCom(btn6)); 
         }
         
         else if(input == btn7){
@@ -710,7 +710,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn7.getActCom());
+            insInteger(getInteger()+getActCom(btn7));
             
         }
         
@@ -719,7 +719,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn8.getActCom());
+            insInteger(getInteger()+getActCom(btn8));
             
         }
         
@@ -728,7 +728,7 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
                     insInteger("");
                     buttonToggle=false;
             }
-            insInteger(getInteger()+btn9.getActCom());
+            insInteger(getInteger()+getActCom(btn9));
             
         }
         
