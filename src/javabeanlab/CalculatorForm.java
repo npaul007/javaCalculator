@@ -432,9 +432,8 @@ public class CalculatorForm extends javax.swing.JFrame implements ActionListener
         }
 
         else if(multiply){
-            multiply();
-            insText(getText() + getInteger()+getActCom(btnMinus));
-            insInteger(db2String(answer));
+            insText(getText()+getActCom(btnMinus));
+            insInteger(getText()+getActCom(btnMinus));
         }
       
         else if(divide){
