@@ -7,3 +7,5 @@ Make sure you have the latest version of java installed.
 
 *italic*
 **bold**
+
+***bash***
